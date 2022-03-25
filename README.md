@@ -1,2 +1,2 @@
-# SeniorProjectNTUTCS
+# Senior project
 Senior project
