@@ -1,4 +1,3 @@
-#Using
 CMake
 Visual Studio 2017
 yolo v4 
