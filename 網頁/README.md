@@ -1,5 +1,6 @@
 使用說明
-    React前端
+    
+    React前端     
         進入REACT的目錄開啟Terminal
     Express後端
         進入REACT/Server/的目錄開啟Terminal
