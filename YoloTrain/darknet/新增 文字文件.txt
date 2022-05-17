@@ -1,0 +1,1 @@
+darknet.exe detector train D:\user\fish_detection\cfg\fish.data D:\user\fish_detection\cfg\yolov4-tiny-obj.cfg D:\user\fish_detection\cfg\yolov4-tiny.conv.29 -map -gpus 0
