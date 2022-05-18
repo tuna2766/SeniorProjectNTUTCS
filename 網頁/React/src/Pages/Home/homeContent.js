@@ -1,13 +1,18 @@
-import { Carousel, Container, Row, Col, Table, ListGroup, Card, Button } from 'react-bootstrap';
+import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom'
-
+import  Marquee  from './components/marquee.js'
+import  fish     from './components/fish.jpg'
+import './homeContent.css'
 const HomeContent = ({}) => {
     return (
-        <div>
-            首頁
-        </div>
+            <div className='homepage'>
+                <div className='marquee' onmouseover="this.stop()" onmouseout="this.start()">
+                    <Marquee/>
+                </div>
+                <img src={fish} ></img>
+            </div>
+
     )
 }
 

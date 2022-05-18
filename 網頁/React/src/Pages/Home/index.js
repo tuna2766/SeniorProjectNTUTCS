@@ -1,4 +1,5 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import './homeContent.css'
 import Login from '../member/login'
 import Register from '../member/register'
 import Header from "../../components/header"
@@ -19,8 +20,6 @@ const home = () =>{
         </Routes>
     </BrowserRouter>
     </>
-
-
 
     )
 }
