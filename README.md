@@ -8,7 +8,7 @@ Current tasks :
 
 ### Web
 
-Current task : 
+Current tasks : 
 
 ### YOLO
 
