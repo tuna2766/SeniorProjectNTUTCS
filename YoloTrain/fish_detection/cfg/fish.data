@@ -1,5 +1,0 @@
-classes = 7
-train = D:\\user\\fish_detection\\cfg\\train.txt
-valid = D:\\user\\fish_detection\\cfg\\val.txt
-names = D:\\user\\fish_detection\\cfg\\fish.names
-backup = D:\\user\\fish_detection\\cfg\\weights\\
