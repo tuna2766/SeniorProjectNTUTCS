@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/91057e3b-16f8-482b-831d-b2163c30e933/microsoft.web/sites/subscriptions/91057e3b-16f8-482b-831d-b2163c30e933/resourceGroups/Web/providers/Microsoft.Web/sites/NTUT-react-app-test",
+    "appService.deploySubpath": "build"
+}

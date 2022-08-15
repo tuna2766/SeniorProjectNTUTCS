@@ -22,7 +22,9 @@ const Login = () => {
         }
       }).then((result) => {
             console.log(result)
-            if(result.data.state==="200"){
+            if(result.data.state==="200"){        
+              window.sessionStorage.setItem('userName',result.data.userName)
+              window.sessionStorage.setItem('password',password)
               alert("登入成功!");
               window.location.href = "../";
           }

@@ -6,9 +6,21 @@
     background-color: rgb(245, 243, 241);
     width: 100%;
     height: 100vh;
-    border-style: double;
 }
-
 .marquee{ 
     border: 3px solid #ccc ;
+}
+
+.Announcement{
+    width: auto;
+    height: auto;
+    border: 3px solid #ccc ;
+}
+.Announcement li{
+    margin:5px;
+}
+
+
+.Announcement li:hover{
+    background-color: #ccc;
 }

@@ -18,14 +18,17 @@ app.post("/signin",async function(req, res) {
   let username = req.body.username 
   let password = req.body.password 
   var response = {
+    "userName": "",
     "error": "",
     "state": ""
 }
   let result = await db.sqlConnection(`SELECT * FROM account WHERE username='${username}' AND password='${password}'`)
-  console.log(result)
+  console.log(result[0])
   if(result.length !== 0){
       response["state"] = '200';
+      response["userName"] = result[0].username
       res.json(response)
+
   }
   else{
     response["state"]='500'

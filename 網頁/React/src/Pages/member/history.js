@@ -28,7 +28,7 @@ const Register = () => {
                             <label>電子郵件</label>
                         </th>
                         <td>
-                            <input type='email' name="email" placeholder='請輸入E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}  ></input>
+                            <input type='email' name="email" placeholder='請輸入E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}} ></input>
                         </td>
                 </tr>
                 <tr>
@@ -77,7 +77,7 @@ const Register = () => {
                         <label>許可證號碼</label>
                     </th>
                     <td>
-                        <input type='text' name="Phone" placeholder='請輸入許可證號碼'></input>
+                        <input type='number' name="Phone" placeholder='請輸入許可證號碼'></input>
                     </td>
                 </tr>
                 </tbody>
