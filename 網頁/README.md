@@ -18,6 +18,3 @@
     Express後端
         node app.js
 
-
-上傳至AZURE方法:
-    https://learningsky.io/deploy-react-to-azure-app-service/
