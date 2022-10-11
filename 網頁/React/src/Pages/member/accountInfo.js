@@ -7,9 +7,15 @@ import home from "../Home"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+let userName = window.sessionStorage.getItem('userName')
+let email = window.sessionStorage.getItem('email')
+let password = window.sessionStorage.getItem('password')
+let Phone_number = window.sessionStorage.getItem('Phone_number')
+let Fishing_boat_name = window.sessionStorage.getItem('Fishing_boat_name')
+let Fishing_area = window.sessionStorage.getItem('Fishing_area')
+let Fishing_License_Number = window.sessionStorage.getItem('Fishing_License_Number')
 
-
-const Login = () => {
+const accountInfo = () => {
 
     const GoBack = (e) => {
         window.location.href = "../";
@@ -22,30 +28,38 @@ const Login = () => {
             <h1>會員資料</h1>
             <Container className='accountInfoDisplay'>
             <Row >
-                <Col sm={4}>姓名     <br></br> <span>*必填</span>
+                <Col sm={4}>電子郵件  <br></br> <span>*必填</span> </Col>
+                <Col sm={8}><h2 id='spanEmail' >{email}</h2> </Col>
+            </Row>
+            <Row >
+                <Col sm={4}>帳號     <br></br> <span>*必填</span>
 
                 </Col>
-                <Col sm={8}>---</Col>
+                <Col sm={8} ><h2 id='spanUserName'>{userName}</h2></Col>
             </Row>
             <Row >
-                <Col sm={4}>電子郵件  <br></br> <span>*必填</span> </Col>
-                <Col sm={8}>---</Col>
+                <Col sm={4}>密碼     <br></br> <span>*必填</span>
+
+                </Col>
+                <Col sm={8}><h2 id='spanPassWord'>{password}</h2></Col>
             </Row>
             <Row >
-                <Col sm={4}>公司名稱  <br></br> <span>*必填</span></Col>
-                <Col sm={8}>---</Col>
+                <Col sm={4}>電話     
+
+                </Col>
+                <Col sm={8}><h2 id='spanPassWord'>{Phone_number}</h2> </Col> 
             </Row>
             <Row >
                 <Col sm={4}>漁船名稱</Col>
-                <Col sm={8}>---</Col>
+                <Col sm={8}>{Fishing_boat_name}</Col>
             </Row>
             <Row >
-                <Col sm={4}>作業區域  </Col>
-                <Col sm={8}>---</Col>
+                <Col sm={4}>漁船作業區域  </Col>
+                <Col sm={8}>{Fishing_area}</Col>
             </Row>
             <Row >
                 <Col sm={4}>許可證號碼<br></br> <span>*必填</span></Col>
-                <Col sm={8}>---</Col>
+                <Col sm={8}>{Fishing_License_Number}</Col>
             </Row>
             </Container>
             <Container className='accountInfoDisplayButton' >
@@ -58,12 +72,12 @@ const Login = () => {
                 </Col>
             </Row>
             </Container>
-
       </div>
     )
+    
 }
         
 
 
 
-export default Login
+export default accountInfo

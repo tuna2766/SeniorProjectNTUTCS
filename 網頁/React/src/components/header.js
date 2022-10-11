@@ -3,13 +3,16 @@ import React, {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';        
 import Logo from '../images/logo.png'
 let userName = window.sessionStorage.getItem('userName')
+
+
+
 if(userName === null){
     userName = 'login'
 }
 const Header = () => {
     const logOut=()=>{
         window.sessionStorage.clear()
-         window.location.href = `/member/login`
+        window.location.href = `/member/login`
         
     }
     const TypeView=()=>{
@@ -17,7 +20,6 @@ const Header = () => {
             return(<Nav>
                 <Nav.Link href="/member/login">登入</Nav.Link>
                 <Nav.Link href="/member/register">註冊</Nav.Link>
-                <Nav.Link href="/member/adminlogin">管理員登入</Nav.Link>
                 </Nav>)
         }
         else{
@@ -40,12 +42,15 @@ const Header = () => {
                     className="me-auto my-lg-0"
                     style={{ maxHeight: '100px' }}
                     navbarScroll
-                >
-                   {TypeView()} 
+                >                
+                {TypeView()}
                 </Nav>
                 </Navbar.Collapse>
             </Container>
+            
         </Navbar>
+
+
     )
 }
 export default Header

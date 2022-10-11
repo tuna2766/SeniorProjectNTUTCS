@@ -1,90 +1,95 @@
-import {useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import axios from 'axios'
 import { useNavigate as navigate } from "react-router-dom";
+import './components/style.css'
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Link } from 'react-router-dom'
+import home from "../Home"
+import Container from 'react-bootstrap/Container';
+import {Card, Button} from 'react-bootstrap'; 
 
-
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import "./components/style.css"
+let user_Name = window.sessionStorage.getItem('userName')
 
-const Register = () => {   
 
+const History = () => {   
+    
+    const [ID, setUsername] = useState("");
+    const [Photo, setPhoto] = useState([""]);
 
-    const [name,setName] = useState('')
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    const [phone,setPhone] = useState('')
-    const send = () =>{
-    }
+    useEffect(()=>{       
+        axios({
+            method: 'get',
+            url: 'http://localhost:7000/member/history',
+            data:{
+                username: 'AAA',
+               }
+          })
+          .then((result) => {
+            setPhoto(result.data)})
+          .catch((err) => { console.error(err) })
+    },[])  
+
+    const listPhoto = Photo.map((data)=>{
+        let fishType=''
+        if(data.fingerlings === 'ALB'){
+            fishType='長鰭鮪'
+        }
+        else if(data.fingerlings === 'BET'){
+            fishType='大目鮪'
+        }
+        else if(data.fingerlings === 'DOL'){
+            fishType='鬼頭刀'
+        }        
+        else if(data.fingerlings === 'LAG'){
+            fishType='紅皮刀'
+        }        
+        else if(data.fingerlings === 'Shark'){
+            fishType='鯊魚'
+        }        
+        else if(data.fingerlings === 'YFT'){
+            fishType='黃鰭鮪'
+        }        
+        else {
+            fishType='其他'
+        }
+        if(data !== undefined){
+            return(                
+                <Col  md="3" >
+                    <Card style={{ width: 'auto' }} className="h-100">
+                            <Card.Img variant="top" src={data.photo}  alt={data.fingerlings} width="250" height="150"/>
+                            <Card.Body className="d-flex flex-column">
+                                <Card.Title className="text-center fw-bold">魚種:{fishType}</Card.Title>
+                                <Card.Text className="fw-light fs-6">捕獲時間: {data.catch_date}<br></br>漁獲量: {data.yield_of_catch}<br></br></Card.Text>
+                            </Card.Body>
+                    </Card>
+                </Col>
+            )
+                
+            }
+        else{
+            return(
+                <p>hi</p>
+
+            )
+        }
+    })
+
     return (
-        <div className='register'>
-            <h1>註冊帳號</h1>
-            <table striped bordered hover>
-                <colgroup>
-                    <col width="30%"/>
-                    <col width="70%"/>
-                </colgroup>
-                <tbody>
-                <tr>
-                        <th>
-                            <label>電子郵件</label>
-                        </th>
-                        <td>
-                            <input type='email' name="email" placeholder='請輸入E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}} ></input>
-                        </td>
-                </tr>
-                <tr>
-                        <th>
-                            <label>會員名稱</label>
-                        </th>
-                        <td>
-                            <input type='text' name="Name" placeholder='請輸入帳號' value={name} onChange={(e) => {setName(e.target.value)}}></input>
-                        </td>
-                </tr>
-
-                <tr>
-                        <th>
-                            <label>密碼</label>
-                        </th>
-                        <td>
-                            <input id="password" name="password" type='password'  placeholder='請輸入密碼'value={password} onChange={(e) => {setPassword(e.target.value)}} ></input>
-                        </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label>公司名稱</label>
-                    </th>
-                    <td>
-                        <input type='text' name="Industry_ID" placeholder='請輸入公司名稱'></input>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label>漁船名稱</label>
-                    </th>
-                    <td>
-                        <input type='text' name="boat_name"placeholder='請輸入漁船名稱' ></input>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label>作業區域</label>
-                    </th>
-                    <td>
-                        <input type='text' name="area" placeholder='請輸入漁船作業區域'></input>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label>許可證號碼</label>
-                    </th>
-                    <td>
-                        <input type='number' name="Phone" placeholder='請輸入許可證號碼'></input>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <button onClick={send} className='button-ex1'>確定送出</button>
+        <div className='accountInfo'>
+            <h1>歷史紀錄</h1>    
+            <div className='accountInfoDisplay'>   
+                <Container > 
+                        <Row>
+                        {listPhoto}
+                        </Row>
+                </Container>         
+            </div>
         </div>
     )
+
 }
 
-export default Register
+export default History

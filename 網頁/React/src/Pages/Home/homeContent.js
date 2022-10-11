@@ -16,7 +16,6 @@ const HomeContent = ({}) => {
                         <h1>公告</h1>
 
                         <Announcement/>
-                        <button align="right"> 更多公告</button>
                     </div>
                 </view> 
                 )               

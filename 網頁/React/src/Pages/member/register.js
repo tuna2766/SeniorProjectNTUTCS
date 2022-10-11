@@ -8,11 +8,67 @@ import "./components/style.css"
 const Register = () => {   
 
 
-    const [name,setName] = useState('')
+    const [ID,setID] = useState('')
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    const [phone,setPhone] = useState('')
-    const send = () =>{
+    const [Phone_number,setPhone] = useState('')
+    const [Fishing_boat_name,setBoat] = useState('')
+    const [Fishing_area,setArea] = useState('')
+    const [Fishing_License_Number,setLicense] = useState('')
+
+
+    
+
+    const send = (e) =>{
+        if (ID === "") {
+            alert("請輸入帳號!");
+          } else if (email === ""){
+            alert("請輸入信箱!");
+          }
+        else if (password=== ""){
+            alert("請輸入密碼!");
+          }
+        else if (Phone_number=== ""){
+          alert("請輸入電話號碼!");
+        }
+        else if (Phone_number.length !== 10){
+            alert("電話號碼輸入錯誤!");
+          }
+        else if (Fishing_boat_name=== ""){
+          alert("請輸入漁船名稱!");
+        }
+        else if (Fishing_area=== ""){
+          alert("請輸入漁船作業區域!");
+        }
+        else if (Fishing_License_Number=== ""){
+            alert("請輸入許可證號碼!");
+          }
+
+        else{
+            axios({
+            method: 'POST',
+            url: 'http://localhost:7000/register/',
+            data:{
+                email: email,
+                username: ID,
+                password: password,
+                Phone_number : Phone_number,
+                Fishing_boat_name:Fishing_boat_name,
+                Fishing_area:Fishing_area,
+                Fishing_License_Number:Fishing_License_Number
+            }
+            }).then((result) => {
+                console.log(result)
+                if(result.data.state==='200'){        
+                    alert("註冊成功!");
+                    window.location.href = "./login";
+                }
+                else if(result.data.state === '500'){
+                    alert(result.data.error)
+                  }
+            });
+        
+        }
     }
     return (
         <div className='register'>
@@ -24,36 +80,36 @@ const Register = () => {
                 </colgroup>
                 <tbody>
                 <tr>
-                        <th>
-                            <label>電子郵件</label>
-                        </th>
-                        <td>
-                            <input type='email' name="email" placeholder='請輸入E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}  ></input>
-                        </td>
-                </tr>
-                <tr>
-                        <th>
-                            <label>會員名稱</label>
-                        </th>
-                        <td>
-                            <input type='text' name="Name" placeholder='請輸入帳號' value={name} onChange={(e) => {setName(e.target.value)}}></input>
-                        </td>
-                </tr>
-
-                <tr>
-                        <th>
-                            <label>密碼</label>
-                        </th>
-                        <td>
-                            <input id="password" name="password" type='password'  placeholder='請輸入密碼'value={password} onChange={(e) => {setPassword(e.target.value)}} ></input>
-                        </td>
+                    <th>
+                        <label>電子郵件</label>
+                    </th>
+                    <td>
+                        <input type='email' name="email" placeholder='請輸入E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}  ></input>
+                    </td>
                 </tr>
                 <tr>
                     <th>
-                        <label>公司名稱</label>
+                        <label>帳號</label>
                     </th>
                     <td>
-                        <input type='text' name="Industry_ID" placeholder='請輸入公司名稱'></input>
+                        <input type='text' name="ID" placeholder='請輸入帳號' value={ID} onChange={(e) => {setID(e.target.value)}}></input>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label>密碼</label>
+                    </th>
+                    <td>
+                        <input id="password" name="password" type='password'  placeholder='請輸入密碼'value={password} onChange={(e) => {setPassword(e.target.value)}} ></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label>電話</label>
+                    </th>
+                    <td>
+                        <input id="Phone_number" name="Phone_number"  placeholder='請輸入電話號碼'  onChange={(e) => {setPhone(e.target.value)}} ></input>
                     </td>
                 </tr>
                 <tr>
@@ -61,15 +117,15 @@ const Register = () => {
                         <label>漁船名稱</label>
                     </th>
                     <td>
-                        <input type='text' name="boat_name"placeholder='請輸入漁船名稱' ></input>
+                        <input type='text' ID = "Fishing_boat_name" name="Fishing_boat_name"placeholder='請輸入漁船名稱' onChange={(e) => {setBoat(e.target.value)}} ></input>
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        <label>作業區域</label>
+                        <label>漁船作業區域</label>
                     </th>
                     <td>
-                        <input type='text' name="area" placeholder='請輸入漁船作業區域'></input>
+                        <input type='text' ID = "Fishing_area"  name="Fishing_area" placeholder='請輸入漁船作業區域' onChange={(e) => {setArea(e.target.value)}}></input>
                     </td>
                 </tr>
                 <tr>
@@ -77,7 +133,7 @@ const Register = () => {
                         <label>許可證號碼</label>
                     </th>
                     <td>
-                        <input type='text' name="Phone" placeholder='請輸入許可證號碼'></input>
+                        <input type='text' name="Fishing_License_Number" placeholder='請輸入許可證號碼' onChange={(e) => {setLicense(e.target.value)}}></input>
                     </td>
                 </tr>
                 </tbody>
@@ -86,5 +142,6 @@ const Register = () => {
         </div>
     )
 }
+
 
 export default Register
