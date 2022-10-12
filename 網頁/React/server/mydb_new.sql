@@ -183,8 +183,7 @@ ALTER TABLE `member`
 -- 資料表索引 `record`
 --
 ALTER TABLE `record`
-  ADD PRIMARY KEY (`Record_ID`) USING BTREE,
-  ADD KEY `fk_record_fish_industry1` (`fish_industry_Fish_Industry_ID`);
+  ADD PRIMARY KEY (`Record_ID`) USING BTREE;
 
 --
 -- 已傾印資料表的限制式
