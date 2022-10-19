@@ -4,6 +4,7 @@ from django.shortcuts import render
 import string
 import random
 from Linebot.image_processing import *
+from Linebot.api import *
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
@@ -40,9 +41,10 @@ def fishapi(request):
                         for chunk in image_content.iter_content():
                             fd.write(chunk)
 
-                    info, img = image_processing(path)
-                    domain = '9ce9-220-136-100-83.jp.ngrok.io'
+                    fish_name, fish_num, info, img = image_processing(path)
+                    domain = '5b6f-220-136-121-18.jp.ngrok.io'
                     img = 'https://'+domain+"/static/" + img
+                    webapi('AAA@gmail.com', fish_name, img, fish_num)
                     message=[]
                     message.append(ImageSendMessage(original_content_url=img,preview_image_url=img))
                     message.append(TextSendMessage(text=info))
